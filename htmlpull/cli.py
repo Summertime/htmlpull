@@ -2,7 +2,7 @@ def cli():
     """HTML Pull.
 
     Usage:
-      htmlpull xpath [-0] <xpath> [--] <file> ... 
+      htmlpull xpath [-0] <xpath> [--] [<file> ...]
       htmlpull -h | --help | --version
 
     Arguments:
@@ -21,6 +21,8 @@ def cli():
     import sys
     import html5lib
     from lxml import etree
+    if not files:
+        files.append('-')
     for f in files:
         if f == '-':
             f = sys.stdin.buffer
